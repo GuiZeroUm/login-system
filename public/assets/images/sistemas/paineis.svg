@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="10mm" height="10mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1000 1000"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:white;stroke-width:26.46;stroke-miterlimit:22.9256}
+    .fil0 {fill:#31A36E;fill-rule:nonzero}
+    .fil1 {fill:#4670A4;fill-rule:nonzero}
+    .fil2 {fill:#FCC966;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_1542354224">
+   <path class="fil0 str0" d="M879.66 437.24c0,-38.9 -11.7,-76.91 -33.59,-109.07 -21.89,-32.15 -52.96,-56.98 -89.15,-71.25 -36.19,-14.27 -75.84,-17.31 -113.78,-8.74 -37.95,8.57 -72.44,28.37 -98.99,56.8l141.69 132.26 193.82 0z"/>
+   <path class="fil1 str0" d="M544.13 304.99c-32.43,34.74 -50.96,80.19 -52.08,127.7 -1.11,47.52 15.27,93.79 46.04,130.01l147.73 -125.46 -141.69 -132.25z"/>
+   <path class="fil2 str0" d="M538.08 562.7c25.69,30.25 60.03,51.88 98.41,61.98 38.37,10.1 78.91,8.18 116.16,-5.5 37.24,-13.68 69.39,-38.47 92.11,-71 22.7,-32.54 34.88,-71.26 34.88,-110.94l-193.82 0 -147.74 125.46z"/>
+   <rect class="fil1" transform="matrix(-0.0125783 0.999921 -0.999921 -0.0125783 235.531 329.058)" width="25.84" height="51.95"/>
+   <rect class="fil1" transform="matrix(-0.0125783 0.999921 -0.999921 -0.0125783 413.536 329.996)" width="25.84" height="160.48"/>
+   <rect class="fil1" transform="matrix(-0.0125783 0.999921 -0.999921 -0.0125783 414.076 386.006)" width="25.84" height="230.71"/>
+   <rect class="fil1" transform="matrix(-0.0125783 0.999921 -0.999921 -0.0125783 413.819 442.022)" width="25.84" height="230.71"/>
+   <rect class="fil1" transform="matrix(-0.0125783 0.999921 -0.999921 -0.0125783 519.516 618.173)" width="25.84" height="344.72"/>
+   <rect class="fil1" transform="matrix(-0.0125783 0.999921 -0.999921 -0.0125783 519.524 674.191)" width="25.84" height="344.72"/>
+  </g>
+ </g>
+</svg>
