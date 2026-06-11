@@ -33,11 +33,16 @@ const itens = computed(() => [
     { rota: '/sistema', label: 'Sistemas', icon: 'monitor', count: navCounts.value?.sistemas ?? null },
     { rota: '/usuario', label: 'Usuários', icon: 'users', count: navCounts.value?.usuarios ?? null },
     { rota: '/sessoes', label: 'Sessões', icon: 'activity', count: navCounts.value?.sessoes ?? null },
+    { rota: '/documentacao', label: 'Documentação', icon: 'book', count: null as number | null },
 ])
 
 function ativo(rota: string): boolean {
     if (rota === '/dashboard') {
         return rotaAtual.value === '/dashboard'
+    }
+
+    if (rota === '/documentacao') {
+        return rotaAtual.value === '/documentacao' || rotaAtual.value.startsWith('/documentacao/')
     }
 
     return rotaAtual.value.startsWith(rota)

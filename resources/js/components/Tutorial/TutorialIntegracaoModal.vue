@@ -127,6 +127,9 @@ onKeyStroke('Escape', () => {
                         Anterior
                     </Botao>
                     <div class="tutorial-footer-actions">
+                        <Link href="/documentacao" class="tutorial-doc-link" @click="tutorial.fechar()">
+                            Documentação
+                        </Link>
                         <Botao variante="tertiary" @click="tutorial.fechar()">Fechar</Botao>
                         <Botao
                             v-if="tutorial.podeAvancar.value"

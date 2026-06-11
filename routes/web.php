@@ -40,6 +40,13 @@ Route::middleware(['auth', 'can:sistema'])->group(function () {
         ->middleware('can:7')
         ->name('sessoes.index');
 
+    Route::prefix('documentacao')->name('documentacao.')->group(function () {
+        Route::inertia('/', 'Documentacao/Index')->name('index');
+        Route::inertia('/configuracao', 'Documentacao/Configuracao')->name('configuracao');
+        Route::inertia('/laravel', 'Documentacao/Laravel')->name('laravel');
+        Route::inertia('/react-next', 'Documentacao/ReactNext')->name('react-next');
+    });
+
     Route::redirect('/orgao', '/dashboard')->name('orgao.index');
     Route::redirect('/lotacao', '/dashboard')->name('lotacao.index');
 });

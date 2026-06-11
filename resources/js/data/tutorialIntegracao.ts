@@ -69,13 +69,13 @@ export const secoesTutorialIntegracao: TutorialSecao[] = [
             },
             {
                 titulo: 'Garantir usuários com acesso',
-                resumo: 'O login só devolve permissões se o usuário tiver lotação em órgão vinculado ao sistema e perfis/permissões atribuídos.',
+                resumo: 'O login só devolve permissões se o usuário tiver vínculo ativo em user_sistemas para este sistema.',
                 itens: [
                     'Usuário precisa existir no Login Universal (e-mail e senha).',
-                    'Vínculo: usuário → lotação em órgão → perfis do sistema ou permissões diretas.',
+                    'Em Usuários → editar → aba Sistemas: vincule o sistema e atribua perfis ou permissões diretas.',
+                    'Sem vínculo, a API retorna 403 mesmo com credenciais corretas.',
                     'Teste com um usuário de homologação antes de integrar produção.',
                 ],
-                aviso: 'A gestão completa de usuários na UI ainda está em evolução; em homologação use seed ou cadastro direto no banco.',
             },
         ],
     },
@@ -90,7 +90,11 @@ export const secoesTutorialIntegracao: TutorialSecao[] = [
                 codigo: {
                     rotulo: '.env do sistema externo',
                     conteudo: `ACL_URL=https://login.seudominio.gov.br
-ACL_SLUG=meu-sistema`,
+ACL_SLUG=meu-sistema
+
+# Back-channel (Docker/proxy): omita se front e API usam o mesmo host
+ACL_API_URL=http://nginx-interno
+ACL_API_HOST=login.seudominio.gov.br`,
                 },
             },
             {
@@ -103,7 +107,6 @@ return redirect("{$aclUrl}/login/{$aclSlug}");`,
                 },
                 itens: [
                     'Salve a URL de destino na sessão (url_intended) para retornar após o login.',
-                    'Se o usuário já estiver logado no Login Universal, o fluxo pula a tela e gera o callback direto.',
                 ],
             },
             {
@@ -125,7 +128,7 @@ return redirect("{$aclUrl}/login/{$aclSlug}");`,
                 resumo: 'Chame o endpoint de validação com o valor recebido em callback. A resposta traz usuário, lotações, perfis e permissões.',
                 codigo: {
                     rotulo: 'Requisição (implementação atual)',
-                    conteudo: `GET {ACL_URL}/api/v1/login/{ACL_SLUG}?token={callback}
+                    conteudo: `GET {ACL_API_URL}/api/v1/login/{ACL_SLUG}?token={callback}
 
 // Resposta 200: JSON com id, nome, email, orgaos.lotacoes, perfis, permissoes...`,
                 },
@@ -142,14 +145,14 @@ return redirect("{$aclUrl}/login/{$aclSlug}");`,
                 ],
                 codigo: {
                     rotulo: 'Exemplo Laravel (Http client)',
-                    conteudo: `$response = Http::timeout(10)->get(
-    config('acl.url').'/api/v1/login/'.config('acl.slug'),
+                    conteudo: `$request = Http::timeout(15)->acceptJson();
+if ($host = config('acl.api_host')) {
+    $request = $request->withHeaders(['Host' => $host]);
+}
+$response = $request->get(
+    config('acl.api_url').'/api/v1/login/'.config('acl.slug'),
     ['token' => $request->query('callback')],
 );
-
-if ($response->failed()) {
-    return redirect(config('acl.url').'/login/'.config('acl.slug'));
-}
 
 session(['usuario_acl' => $response->json()]);`,
                 },
@@ -177,6 +180,7 @@ GET {ACL_URL}/api/v1/check/{acl_token}`,
 4. App externo → GET /api/v1/login/{slug}?token=...
 5. App externo cria sessão local → dashboard`,
                 },
+                linkInterno: { href: '/documentacao', rotulo: 'Ver documentação completa' },
             },
         ],
     },
